@@ -19,9 +19,10 @@ namespace SSSCalApp.Core.Entity
         public Nullable<bool> RepeatMonthly { get; set; }
         public string Description { get; set; }
         public System.DateTime Createdate { get; set; }
+        public string topic { get; set; }
     
         public virtual Person CreateUser { get; set; }
-        public virtual Topic topic { get; set; }
+        public virtual Topic topicf { get; set; }
  //       public virtual ICollection<Group> Groups { get; set; }
     }
 }
