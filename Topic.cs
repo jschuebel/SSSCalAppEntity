@@ -3,6 +3,7 @@ using System.Collections.Generic;
     
 namespace SSSCalApp.Core.Entity
 {
+    [Serializable]
     public partial class Topic
     {
         public Topic()

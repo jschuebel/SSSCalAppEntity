@@ -3,6 +3,7 @@
     
 namespace SSSCalApp.Core.Entity
 {
+    [Serializable]
     public partial class Address
     {
         public Address()
