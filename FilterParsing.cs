@@ -59,7 +59,8 @@ namespace SSSCalApp.Core.Entity
         {
             string caseMod = "";
             var p = typeof(T).GetProperty(field);
-
+            if (p==null)
+                throw new Exception($"GetExpression:field=({field}) did not exist.");
             var dataType = (p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ?
                 p.PropertyType.GetGenericArguments()[0].Name.ToLower() : p.PropertyType.Name.ToLower(); ;
 
@@ -97,7 +98,7 @@ namespace SSSCalApp.Core.Entity
                     break;
 
                 case "contains":
-                    exStr = string.Format("{0}{2}.Contains({1})", field, param, caseMod);
+                    exStr = string.Format("{0}!=null && {0}{2}.Contains({1})", field, param, caseMod);
                     break;
 
                 case "startswith":
@@ -121,6 +122,7 @@ namespace SSSCalApp.Core.Entity
                     break;
                 default:
                     exStr = "";
+                    throw new Exception($"GetExpression:op=({op}) has no handler.");
                     break;
             }
 
